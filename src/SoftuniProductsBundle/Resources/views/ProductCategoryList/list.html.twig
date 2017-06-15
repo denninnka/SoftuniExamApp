@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <h1>Category list</h1>
+    <table>
+        <thead>
+        <tr>
+            <th>Title</th>
+            <th>Image</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for category in productCategory %}
+            {% if category.children.count > 0 %}
+            {% set link=url('product_category_list', {parent:category.id}) %}
+                {% else %}
+                    {% set link=url('product_list', {id:category.id}) %}
+                    {% endif %}
+            <tr>
+
+                <td><a href="{{ link }}">{{ category.title }}</a></td>
+                <td>{% if category.image %}
+                    <a href="{{ link }}"><img src="{{ asset('uploads/product-category/' ~ category.image) }}" width="200" height="200" /></a>
+                    {% endif %}
+                <td>
+
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

@@ -1,0 +1,10 @@
+services:
+    softuniproductsbundle.product.manager:
+        class: 'SoftuniProductsBundle\Services\SoftuniProductManager'
+        arguments: ["@doctrine.orm.entity_manager", "SoftuniProductsBundle\\Entity\\Product", "@service_container"]
+    softuniproductsbundle.productcategory.manager:
+        class: 'SoftuniProductsBundle\Services\SoftuniProductCategoryManager'
+        arguments: ["@doctrine.orm.entity_manager", "SoftuniProductsBundle\\Entity\\ProductCategory", "@service_container"]
+    softuni_products.services.mail_sender:
+        class: 'SoftuniProductsBundle\Services\MailSender'
+        arguments: ['@mailer', '@templating']

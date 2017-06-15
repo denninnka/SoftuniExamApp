@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Product</h1>
+
+    <table>
+        <tbody>
+
+        <tr>
+            <th>Slug</th>
+            <td>{{ product.slug }}</td>
+        </tr>
+        <tr>
+            <th>Title</th>
+            <td>{{ product.title }}</td>
+        </tr>
+        <tr>
+            <th>Subtitle</th>
+            <td>{{ product.subtitle }}</td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>{{ product.description }}</td>
+        </tr>
+        <tr>
+            <th>Image</th>
+            <td>{% if product.image %}
+                    <img src="{{ asset('uploads/product/' ~ product.image) }}" width="200" height="200"/>
+                {% else %}
+                    <p>No image</p>
+                {% endif %}
+            </td>
+        </tr>
+        <tr>
+            <th>Price</th>
+            <td>{{ product.price }}</td>
+        </tr>
+
+        </tbody>
+    </table>
+
+{% endblock %}

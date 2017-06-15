@@ -1,0 +1,8 @@
+softuni_products:
+    resource: "@SoftuniProductsBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation

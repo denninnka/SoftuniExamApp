@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Productcategories list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Slug</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Image</th>
+                <th>Rank</th>
+                <th>Parent</th>
+                <th>Createdat</th>
+                <th>Updatedat</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for productCategory in productCategories %}
+            <tr>
+                <td><a href="{{ path('admin_product-category_show', { 'id': productCategory.id }) }}">{{ productCategory.id }}</a></td>
+                <td>{{ productCategory.slug }}</td>
+                <td>{{ productCategory.title }}</td>
+                <td>{{ productCategory.description }}</td>
+                <td>{% if productCategory.image %}
+                        <a href="{{ asset('uploads/product-category/' ~ productCategory.image) }}">View image</a>
+                    {% endif %}
+                <td>
+                <td>{{ productCategory.rank }}</td>
+                <td>{{ productCategory.parent }}</td>
+                <td>{% if productCategory.createdAt %}{{ productCategory.createdAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if productCategory.updatedAt %}{{ productCategory.updatedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('admin_product-category_show', { 'id': productCategory.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('admin_product-category_edit', { 'id': productCategory.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_product-category_new') }}">Create a new productCategory</a>
+        </li>
+    </ul>
+{% endblock %}
